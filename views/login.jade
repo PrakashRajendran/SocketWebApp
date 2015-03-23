@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title #{title}
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='./stylesheets/layout.css', rel='stylesheet', type='text/css', media='screen')
+    link(href='./stylesheets/form.css', rel='stylesheet', type='text/css', media='screen')
+    script(src='./javascripts/jquery.min.js', type='application/javascript')
+  body
+    .container
+      header
+        a(href='#')
+          img(src='./images/media/socket-app-logo.png', alt='socket-logo')
+        nav
+          ul
+            li
+              a(href='#') HOME
+            li
+              a(href='#') ABOUT
+            li
+              a(href='#') REGISTER
+            li
+              a(href='#') CONTACT
+        // Nav menu for smaller devices
+        select#small-nav
+          option(value='home') HOME
+          option(value='about') ABOUT
+          option(value='register') REGISTER
+          option(value='contact') CONTACT
+        // 
+      // end .header
+      .content
+        form(action='/login', method='POST')
+          input.input-box(type='email', placeholder='Email ID', required='', name='username')
+          br
+          br
+          input.input-box(type='password', placeholder='Password', required='', name='password')
+          br
+          button#submit Sign In
+          br
+        // end .form
+        a.a-btn(href='/signup')
+         button#first-time First Time User!
+         img#video(src='./images/media/video-placeholder.png', width='44%')
+        // end .content
+      footer
+        p Footer
+      // end .footer
+      // end .container

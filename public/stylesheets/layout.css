@@ -1,0 +1,145 @@
+@charset "utf-8";
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	color: #efefef;
+	background: #004b87 url('https://gc.blackboard.com/branding/_1_1/georgian-accelerator-header.png') 50% top repeat;
+	margin: 0;
+	padding: 0;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul{
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 15px;
+	padding-left: 15px; 
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+	display: block;
+	margin: 0 auto;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+header img{
+	padding: 30px 0;
+}
+
+/* ~~ navigationh ~~ */
+nav {
+	height: 60px;
+	background-color: #333;
+}
+
+nav ul{
+}
+
+nav ul li {
+	width: 150px;
+	display: inline-block;
+	padding: 18px 0;
+	text-align: center;
+}
+nav ul li:hover, li:active{
+	background-color: #004b87;
+}
+nav ul li a{
+	color: #efefef;
+	text-decoration: none;
+	font-weight:300;
+}
+
+nav ul li a:hover, a:active, a:focus{
+	text-decoration: underline;
+	font-size: 14.5px;
+	font-weight: bolder;
+}
+#small-nav{
+	width: 420px;
+	height: 60px;
+	font-size: 18px;
+	text-align: center;
+	color: #efefef;
+	padding: 18px 0;
+	margin: 0 auto 0 auto;
+	display:block;
+	background-color: #222;
+	border-radius: 5px;
+}
+select option{
+	padding: 5px;
+}
+#video{
+	margin: 4% auto;
+	text-align:center;
+	display:block;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	width: 95%;
+	max-width: 1260px;
+	min-width: 320px;
+	margin: 0 auto; 
+}
+.content {
+	padding: 10px 0;
+}
+/* ~~ The footer ~~ */
+footer {
+	text-align: center;
+	padding: 10px 0;
+	background-color: #222;
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+@media only screen and (min-width: 320px) {
+	.container{
+		padding:10px;
+	}
+	nav{
+		display:none;
+	}
+	#video{
+		width:400px;
+		padding-top: 5px;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	#video{
+		width: 420px;
+	}
+}
+@media only screen and (min-width: 768px) {
+	#video{
+		width: 430px;
+	}
+	#small-nav{
+		display:none;
+	}
+	nav {
+	height: 60px;
+	background-color: #333;
+	display:block;
+	text-align: center;
+	}
+}
