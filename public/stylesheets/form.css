@@ -83,3 +83,28 @@ form{
 	width: 100%;
 	text-align: center;
 }
+
+/* Login Errors */
+
+div.error {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 11px;
+  color: white;
+  width: 25%;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+
+div.error span {
+  background-color: red;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.input-error {
+	border: 1px solid red;
+}

@@ -48,17 +48,27 @@ module.exports = function(passport) {
 	  
 	 
 	  /* Handle Registration POST */
-	  app.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/dashboard',
-		failureRedirect: '/',
-		failureFlash : true 
-	  }));
 	  
-		/* Handle Logout */
-		app.get('/signout', isAuthenticated, function(req, res) {
-		  req.logout();
-		  res.redirect('/');
-});
+	  app.post('/signup', function(req, res, next) {
+		passport.authenticate('signup', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/signup',
+		failureFlash : 'Invalid username or password.'
+	  },function(err, user, info) {
+			if (err) { return next(err); }
+			if (!user) { return res.send('Sorry, you\'re not logged in correctly.'); }
+			req.logIn(user, function(err) {
+				if (err) { return next(err); }
+				return res.json({detail: info});
+			});
+		})(req, res, next);
+	});
+
+	/* Handle Logout */
+	app.get('/signout', isAuthenticated, function(req, res) {
+	  req.logout();
+	  res.redirect('/');
+	});
 	 
 	  return app;
 
