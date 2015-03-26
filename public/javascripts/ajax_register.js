@@ -12,13 +12,13 @@ $(document).ready(function() {
             })
             .done(function (result) {
 				console.log("123");
-                $('#register-form').appendTo('<div><span>User registration successfull</span></div>').delay(2000).queue(function(next){
+                $('#register-form').appendTo('<div><span>User registration successfull</span></div>').delay(5000).queue(function(next){
 					  $('div').fadeOut('slow').remove(); 
 				});
             })
             .always(function (result) {
 				$('#register-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>' + result.responseText +'</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>' + result.responseText +'</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
 				console.log(result);
@@ -31,22 +31,22 @@ $(document).ready(function() {
         } else {
             if ($('#firstName').val().length <= 0) {
 				$('#register-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Please fill in your First Name</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your First Name</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#lastName').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Please fill in your Last Name!!!</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your Last Name!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#username').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Please fill in your email id!!!</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your email id!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#createpassword').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Please fill in your password!!!</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your password!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             }

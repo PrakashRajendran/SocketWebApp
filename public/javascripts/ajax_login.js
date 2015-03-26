@@ -16,7 +16,7 @@ $(document).ready(function() {
             })
             .always(function (result) {
 				$('#login-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Invalid email or pass2word!!!</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Invalid email or pass2word!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
 				console.log("345");
@@ -31,21 +31,21 @@ $(document).ready(function() {
 				$('#login-form').prepend('<div class="error"></div>');
 				$('input[type="password"]').removeClass('input-error');
 				$('input[type="email"]').addClass('input-error');
-				$('div.error').append('<span>Please fill in your email id</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your email id</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if($('#username').val().length > 0 && $('#password').val().length <= 0) {
                 $('#login-form').prepend('<div class="error"></div>');
 				$('input[type="email"]').removeClass('input-error');
 				$('input[type="password"]').addClass('input-error');
-				$('div.error').append('<span>Please fill in your password!!!</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your password!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else {
                 $('#login-form').prepend('<div class="error"></div>');
 				$('input[type="email"]').addClass('input-error');
 				$('input[type="password"]').addClass('input-error');
-				$('div.error').append('<span>Please fill in your email id and password.</span>').delay(2000).queue(function(next){
+				$('div.error').append('<span>Please fill in your email id and password.</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove();
 				});
 				
