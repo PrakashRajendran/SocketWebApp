@@ -7,6 +7,7 @@ $(document).ready(function() {
                 url: '/login',
                 data: {action : 'login', username : $('#username').val(), password : $('#password').val()},
                 type: 'post',
+				crossDomain: true,
                 async: 'true',
                 dataType: 'json'
             })

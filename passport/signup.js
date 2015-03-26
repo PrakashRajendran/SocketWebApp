@@ -2,6 +2,10 @@ var LocalStrategy   = require('passport-local').Strategy;
 var User = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
 
+//Import log4js framework to write and display logs
+var log4js = require('../logger.js');
+var log=log4js.LOG;
+
 module.exports = function(passport){
 
 	passport.use('signup', new LocalStrategy({
@@ -14,12 +18,12 @@ module.exports = function(passport){
                 User.findOne({ 'username' :  username }, function(err, user) {
                     // In case of any error, return using the done method
                     if (err){
-                        console.log('Error in SignUp: '+err);
+                        log.info('Seems there is an error in signup process: '+err);
                         return done(err);
                     }
                     // already exists
                     if (user) {
-                        console.log('User already exists with username: '+username);
+                        log.info('User already exists with username: '+username + '. Please try the different username.');
                         return done(null, false, { username: username});
                     } else {
                         // if there is no user with that email
@@ -36,10 +40,10 @@ module.exports = function(passport){
                         // save the user
                         newUser.save(function(err) {
                             if (err){
-                                console.log('Error in Saving user: '+err);  
+                                log.info('Seems there is an error in saving the user: '+err);  
                                 throw err;  
                             }
-                            console.log('User Registration succesfull. Redirecting to.....creating user session......redirecting user to dashboard');    
+                            log.info('User Registration succesfull. Redirecting to.....creating user session......redirecting user to dashboard');    
                             return done(null, newUser, { successRedirect: 'dashboard'} );
                         });
                     }
@@ -53,6 +57,7 @@ module.exports = function(passport){
 
     // Generates hash using bCrypt
     var createHash = function(password){
+		log.info('Encrypting user password to save in database');
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
     }
 
