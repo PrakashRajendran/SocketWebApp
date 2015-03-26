@@ -58,7 +58,7 @@ module.exports = function(passport) {
 			if (!user) { return res.send('User already exists with ' + info.username); }
 			req.logIn(user, function(err) {
 				if (err) { return next(err); }
-				return res.json({detail: info});
+				return res.json({redirector: info});
 			});
 		})(req, res, next);
 	});

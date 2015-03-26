@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $(document).on('click', '#submit', function() {
-        if($('#firstName').val().length > 0 && $('#firstName').val().length > 0 && $('#lastName').val().length > 0 && $('#username').val().length > 0 && $('#createpassword').val().length > 0){
+        if($('#firstName').val().length > 0 && $('#firstName').val().length > 0 && $('#lastName').val().length > 0 
+		&& $('#username').val().length > 0 && $('#createpassword').val().length > 0 && $('#confirmpassword').val().length > 0 && ($('#createpassword').val()== $('#confirmpassword').val())){
             // Send data to server through the ajax call
             // action is functionality we want to call and outputJSON is our data
             $.ajax({
@@ -15,6 +16,8 @@ $(document).ready(function() {
                 $('#register-form').appendTo('<div><span>User registration successfull</span></div>').delay(5000).queue(function(next){
 					  $('div').fadeOut('slow').remove(); 
 				});
+				console.log(result);
+				window.location = result.redirector.successRedirect;
             })
             .always(function (result) {
 				$('#register-form').prepend('<div class="error"></div>');
@@ -46,7 +49,17 @@ $(document).ready(function() {
 				});
             } else if ($('#createpassword').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Please fill in your password!!!</span>').delay(5000).queue(function(next){
+				$('div.error').append('<span>Please fill in your create password!!!</span>').delay(5000).queue(function(next){
+					  $(this).fadeOut('slow').remove(); 
+				});
+            } else if ($('#confirmpassword').val().length <= 0) {
+                $('#register-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>Please fill in your confirm password!!!</span>').delay(5000).queue(function(next){
+					  $(this).fadeOut('slow').remove(); 
+				});
+            } else if ($('#createpassword').val()!= $('#confirmpassword').val()) {
+                $('#register-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>Passwords does not match</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             }
