@@ -15,8 +15,9 @@ $(document).ready(function() {
                 window.location.replace(result.redirect);
             })
             .always(function (result) {
-				$('#login-form').appendTo('<div><span>Invalid email or pass2word!!!</span></div>').delay(2000).queue(function(next){
-					  $('div').fadeOut('slow').remove(); 
+				$('#login-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>Invalid email or pass2word!!!</span>').delay(2000).queue(function(next){
+					  $(this).fadeOut('slow').remove(); 
 				});
 				console.log("345");
             })
