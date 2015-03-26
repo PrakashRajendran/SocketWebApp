@@ -35,36 +35,52 @@ $(document).ready(function() {
         } else {
             if ($('#firstName').val().length <= 0) {
 				$('#register-form').prepend('<div class="error"></div>');
+				$('#firstName').removeClass('input-error');
+				$('#firstName').addClass('input-error');
 				$('div.error').append('<span>Please fill in your First Name</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#lastName').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
+				$('#lastName').removeClass('input-error');
+				$('#lastName').addClass('input-error');
 				$('div.error').append('<span>Please fill in your Last Name!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#username').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
+				$('#username').removeClass('input-error');
+				$('#username').addClass('input-error');
 				$('div.error').append('<span>Please fill in your email id!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#select-occupation option:selected').val() == "0") {
                 $('#register-form').prepend('<div class="error"></div>');
+				$('#select-occupation').removeClass('input-error');
+				$('#select-occupation').addClass('input-error');
 				$('div.error').append('<span>Please select occupation</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#createpassword').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
+				$('#createpassword').removeClass('input-error');
+				$('#createpassword').addClass('input-error');
 				$('div.error').append('<span>Please fill in your create password!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#confirmpassword').val().length <= 0) {
                 $('#register-form').prepend('<div class="error"></div>');
+				$('#confirmpassword').removeClass('input-error');
+				$('#confirmpassword').addClass('input-error');
 				$('div.error').append('<span>Please fill in your confirm password!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
             } else if ($('#createpassword').val()!= $('#confirmpassword').val()) {
                 $('#register-form').prepend('<div class="error"></div>');
+				$('#createpassword').removeClass('input-error');
+				$('#confirmpassword').removeClass('input-error');
+				$('#createpassword').addClass('input-error');
+				$('#confirmpassword').addClass('input-error');
 				$('div.error').append('<span>Passwords does not match</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
