@@ -1,24 +1,27 @@
 $(document).ready(function() {
     $(document).on('click', '#submit', function() {
-        if($('#username').val().length > 0 && $('#password').val().length > 0){
+        if($('#firstName').val().length > 0 && $('#firstName').val().length > 0 && $('#lastName').val().length > 0 && $('#username').val().length > 0 && $('#createpassword').val().length > 0){
             // Send data to server through the ajax call
             // action is functionality we want to call and outputJSON is our data
             $.ajax({
-                url: '/login',
-                data: {action : 'login', username : $('#username').val(), password : $('#password').val()},
+                url: '/signup',
+                data: {action : 'signup', firstName : $('#firstName').val(), lastName : $('#lastName').val(), username : $('#username').val(), password : $('#createpassword').val()},
                 type: 'post',
                 async: 'true',
                 dataType: 'json'
             })
             .done(function (result) {
 				console.log("123");
-                window.location.replace(result.redirect);
-            })
-            .always(function (result) {
-				$('#login-form').appendTo('<div><span>Invalid email or pass2word!!!</span></div>').delay(2000).queue(function(next){
+                $('#register-form').appendTo('<div><span>User registration successfull</span></div>').delay(2000).queue(function(next){
 					  $('div').fadeOut('slow').remove(); 
 				});
-				console.log("345");
+            })
+            .always(function (result) {
+				$('#register-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>' + result.responseText +'</span>').delay(2000).queue(function(next){
+					  $(this).fadeOut('slow').remove(); 
+				});
+				console.log(result);
             })
             .fail(function (request,error) {
                 console.log("656");
@@ -26,30 +29,27 @@ $(document).ready(function() {
                 //alert('Network error has occurred please try again!');
             })
         } else {
-            if($('#username').val().length <= 0 && $('#password').val().length > 0) {
-				$('#login-form').prepend('<div class="error"></div>');
-				$('input[type="password"]').removeClass('input-error');
-				$('input[type="email"]').addClass('input-error');
-				$('div.error').append('<span>Please fill in your email id</span>').delay(2000).queue(function(next){
+            if ($('#firstName').val().length <= 0) {
+				$('#register-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>Please fill in your First Name</span>').delay(2000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
-            } else if($('#username').val().length > 0 && $('#password').val().length <= 0) {
-                $('#login-form').prepend('<div class="error"></div>');
-				$('input[type="email"]').removeClass('input-error');
-				$('input[type="password"]').addClass('input-error');
+            } else if ($('#lastName').val().length <= 0) {
+                $('#register-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>Please fill in your Last Name!!!</span>').delay(2000).queue(function(next){
+					  $(this).fadeOut('slow').remove(); 
+				});
+            } else if ($('#username').val().length <= 0) {
+                $('#register-form').prepend('<div class="error"></div>');
+				$('div.error').append('<span>Please fill in your email id!!!</span>').delay(2000).queue(function(next){
+					  $(this).fadeOut('slow').remove(); 
+				});
+            } else if ($('#createpassword').val().length <= 0) {
+                $('#register-form').prepend('<div class="error"></div>');
 				$('div.error').append('<span>Please fill in your password!!!</span>').delay(2000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
-            } else {
-                $('#login-form').prepend('<div class="error"></div>');
-				$('input[type="email"]').addClass('input-error');
-				$('input[type="password"]').addClass('input-error');
-				$('div.error').append('<span>Please fill in your email id and password.</span>').delay(2000).queue(function(next){
-					  $(this).fadeOut('slow').remove();
-				});
-				
             }
-			
         }
         return false; // cancel original event to prevent form submitting
     })

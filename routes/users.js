@@ -52,11 +52,10 @@ module.exports = function(passport) {
 	  app.post('/signup', function(req, res, next) {
 		passport.authenticate('signup', {
 		successRedirect: '/dashboard',
-		failureRedirect: '/signup',
-		failureFlash : 'Invalid username or password.'
+		failureRedirect: '/signup'
 	  },function(err, user, info) {
 			if (err) { return next(err); }
-			if (!user) { return res.send('Sorry, you\'re not logged in correctly.'); }
+			if (!user) { return res.send('User already exists with ' + info.username); }
 			req.logIn(user, function(err) {
 				if (err) { return next(err); }
 				return res.json({detail: info});

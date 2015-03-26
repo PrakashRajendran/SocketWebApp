@@ -7,6 +7,7 @@ html
     link(href='./stylesheets/layout.css', rel='stylesheet', type='text/css', media='screen')
     link(href='./stylesheets/form.css', rel='stylesheet', type='text/css', media='screen')
     script(src='./javascripts/jquery.min.js', type='application/javascript')
+    script(src='./javascripts/ajax_register.js')
   body
     .container
       header
@@ -31,20 +32,20 @@ html
         // 
       // end .header
       .content
-        form(id='register', action='/signup' method='POST')
-          input.input-box(type='text', name='firstName', placeholder='Full Name', required='')
+        form(id='register-form', action='/signup' method='POST')
+          input.input-box(type='text', name='firstName', id='firstName', placeholder='Full Name', required='')
           br
           br
-          input.input-box(type='text', name='lastName', placeholder='Last Name', required='')
+          input.input-box(type='text', name='lastName', id='lastName', placeholder='Last Name', required='')
           br
           br
-          input.input-box(type='email', name='username', placeholder='Email ID', required='')
+          input.input-box(type='email', name='username', id='username', placeholder='Email ID', required='')
           br
           br
-          input.input-box(type='password', name='password', placeholder='Create Password', required='')
+          input.input-box(type='password', name='createpassword', id='createpassword', placeholder='Create Password', required='')
           br
           br
-          input.input-box(type='password', placeholder='Retype Password', required='')
+          input.input-box(type='password', name='retypepassword', id='retypepassword', placeholder='Retype Password', required='')
           br
           br
           button#submit SUBMIT
