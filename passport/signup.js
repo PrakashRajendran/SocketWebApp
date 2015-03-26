@@ -38,8 +38,8 @@ module.exports = function(passport){
                                 console.log('Error in Saving user: '+err);  
                                 throw err;  
                             }
-                            console.log('User Registration succesful');    
-                            return done(null, newUser);
+                            console.log('User Registration succesfull. Redirecting to.....creating user session......redirecting user to dashboard');    
+                            return done(null, newUser, { successRedirect: 'dashboard'} );
                         });
                     }
                 });
