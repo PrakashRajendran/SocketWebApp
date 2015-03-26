@@ -24,6 +24,7 @@ module.exports = function(passport){
                         console.log('Invalid Password');
                         return done(null, false, req.flash('message', 'Invalid Password')); // redirect back to login page
                     }
+					console.log("3344545");
                     // User and password both match, return user from done method
                     // which will be treated like success
                     return done(null, user);

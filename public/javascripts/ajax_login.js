@@ -16,7 +16,7 @@ $(document).ready(function() {
             })
             .always(function (result) {
 				$('#login-form').prepend('<div class="error"></div>');
-				$('div.error').append('<span>Invalid email or pass2word!!!</span>').delay(5000).queue(function(next){
+				$('div.error').append('<span>Invalid email or password!!!</span>').delay(5000).queue(function(next){
 					  $(this).fadeOut('slow').remove(); 
 				});
 				console.log("345");

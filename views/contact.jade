@@ -2,41 +2,40 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    title Dashboard
+    title Contact
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='./stylesheets/layout.css', rel='stylesheet', type='text/css', media='screen')
     link(href='./stylesheets/form.css', rel='stylesheet', type='text/css', media='screen')
-    script(src='./javascripts/jquery.min.js', type='application/javascript')
-    script(src='./javascripts/jquery-ui.min.js', type='application/javascript')
     script(src='./javascripts/jquery-2.1.3.min.js', type='application/javascript')
+    script(src='./javascripts/jquery-ui.min.js', type='application/javascript')
     script(src='./javascripts/jquery.easing.1.3.js', type='application/javascript')
   body
     .container
       header
-        a(href='home.html')
+        a(href='/dashboard')
           img(src='./images/media/socket-app-logo.png', alt='socket-logo')
         nav
           ul
             li
-              a(href='home.html') HOME
+              a(href='/') HOME
             li
-              a(href='about.html') ABOUT
+              a(href='/about') ABOUT
             li
-              a(href='register.html') REGISTER
+              a(href='/signup') REGISTER
             li
-              a(href='contact.html') CONTACT
+              a(href='/contact') CONTACT
         // Nav menu for smaller devices
         .slideOut
           a(href='', title='Navigation Panel') ➜
           ul
             li
-              a(href='home.html') HOME
+              a(href='/') HOME
             li
-              a(href='about.html') ABOUT
+              a(href='/about') ABOUT
             li
-              a(href='register.html') REGISTER
+              a(href='/signup') REGISTER
             li
-              a(href='contact.html') CONTACT
+              a(href='/contact') CONTACT
         // 
       // end .header
       .content
@@ -49,12 +48,9 @@ html
             button#char CHARGE
           a(href='')
             button#hist HISTORY
-        figure
-          a(href='/signout')
-            img#singn-out(src='https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png', width='50px', alt='sign-out-icon')
         .content
           form#update-profile
-            h2 USER PROFILE
+            h2 CONTACT US
             br
             input.input-box(type='text', placeholder='First Name', required='')
             br
@@ -68,13 +64,10 @@ html
             input.input-box(type='tel', placeholder='Phone Number')
             br
             br
-            input.input-box(type='text', placeholder='City')
+            textarea(placeholder='Please type of message')
             br
             br
-            input.input-box(type='text', placeholder='Province')
-            br
-            br
-            button.orangegrade(type='submit') UPDATE PROFILE
+            button.greengrade CONTACT
             br
             br
             br

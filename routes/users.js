@@ -12,6 +12,15 @@ var isAuthenticated = function (req, res, next) {
 }
 
 module.exports = function(passport) {
+	
+	/**
+	 * GET contact page
+	 */
+	 app.get('/contact', function(req, res) {
+		  // redirect to login page
+		  res.render('contact', { title: 'SocketWebApp | Contact Us'})
+	  });
+	 
 	 /**
 	 * GET login page
 	 */
@@ -25,8 +34,8 @@ module.exports = function(passport) {
 		  res.render('login', { title: 'SocketWebApp | Login Now', username: req.username});
 	  });
 	  
-	   app.post('/login', passport.authenticate('login', {
-		successRedirect: '/dashboard',
+	   app.post('/', passport.authenticate('login', {
+		successRediloginrect: '/dashboard',
 		failureRedirect: '/',
 		failureFlash : true 
 	  }));
@@ -36,7 +45,7 @@ module.exports = function(passport) {
 	 * GET Dashboard page
 	 */
 	  app.get('/dashboard', isAuthenticated, function(req, res) {
-		  res.render('dashboard', { title: 'SocketWebApp | Dashboard', username: req.username});
+		  res.render('dashboard', { title: 'SocketWebApp | Dashboard', username: req.user.username});
 	  });
 	  
 	/**
@@ -57,8 +66,9 @@ module.exports = function(passport) {
 			if (err) { return next(err); }
 			if (!user) { return res.send('User already exists with ' + info.username); }
 			req.logIn(user, function(err) {
+				console.log("user:username " + user.username);
 				if (err) { return next(err); }
-				return res.json({redirector: info});
+				return res.json({redirector: info, user : user.username});
 			});
 		})(req, res, next);
 	});
